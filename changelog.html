@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhereToNext - Changelog</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    <div class="mobile-overlay"></div>
+    <aside class="sidebar">
+        <span class="sidebar-title">NAVIGATION</span>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="screenshots.html">Screenshots</a></li>
+            <li class="active"><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="guide.html">User Guide</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="header-block">
+            <h1>Changelog</h1>
+            <span style="color: #666;">Version History</span>
+        </div>
+
+        <div class="section-block">
+            <span class="section-title">v1.0.1 - Current</span>
+            <p>Released: Jan 26, 2026</p>
+            <ul>
+                <li>Added additional aircraft.</li>
+                <li>Improved job generation algorithm.</li>
+                <li>Current Job page revised.</li>
+                <li>Converted all aircraft to use metric in the database.</li>
+            </ul>
+        </div>
+
+        <div class="section-block">
+            <span class="section-title">v1.0.0</span>
+            <p>Released: Jan 21, 2026</p>
+            <ul>
+                <li>Initial non-public release.</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const toggle = document.querySelector('.mobile-nav-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.mobile-overlay');
+
+        function toggleMenu() {
+            toggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        toggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>
