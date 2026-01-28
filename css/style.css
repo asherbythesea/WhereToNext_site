@@ -10,7 +10,9 @@
     --terminal-font: 'Inconsolata', monospace;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -188,7 +190,7 @@ p {
     width: 100%;
     height: auto;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .screenshot-title {
@@ -360,7 +362,7 @@ details p {
     }
 
     /* Dim content when menu is open */
-    .mobile-overlay.active ~ .main-content {
+    .mobile-overlay.active~.main-content {
         opacity: 0.3;
     }
 
@@ -528,10 +530,29 @@ details p {
     cursor: pointer;
     transition: transform 0.2s;
     /* Crop 8px from edges to remove window border */
-    clip-path: inset(8px);
+    clip-path: inset(2px);
 }
 
 .screenshot-item img:hover {
     transform: scale(1.01);
     box-shadow: 0 0 15px rgba(215, 186, 125, 0.3);
+}
+
+/* INDEX PAGE HEADER */
+.header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.header-logo {
+    height: 16px;
+    width: auto;
+    /* Optional: make it glow slightly or match theme */
+    filter: drop-shadow(0 0 5px rgba(215, 186, 125, 0.3));
+}
+
+.header-title-row h1 {
+    margin: 0;
 }
