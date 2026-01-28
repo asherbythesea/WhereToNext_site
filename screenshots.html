@@ -55,8 +55,27 @@
     </main>
 
     <div class="lightbox">
-        <button class="lightbox-close">Close</button>
-        <img id="lb-img" alt="">
+        <div class="lightbox-nav">
+            <button class="lightbox-prev">&larr; Prev</button>
+            <button class="lightbox-close">Close</button>
+            <button class="lightbox-next">Next &rarr;</button>
+        </div>
+        <div class="lightbox-content">
+            <div class="lightbox-description">
+                <h3 id="lb-title"></h3>
+                <p id="lb-desc"></p>
+                <svg class="lightbox-arrow" viewBox="0 0 120 60" preserveAspectRatio="none">
+                    <path d="M0,30 Q40,30 80,10 L100,5" stroke-dasharray="6,4" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <polygon points="100,5 90,0 95,12" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="lightbox-image-wrap">
+                <img id="lb-img" alt="">
+            </div>
+        </div>
+        <div class="lightbox-counter">
+            <span id="lb-current">1</span> / <span id="lb-total">6</span>
+        </div>
     </div>
 
     <footer>
@@ -78,17 +97,60 @@
 
         const lb = document.querySelector('.lightbox');
         const lbImg = document.getElementById('lb-img');
+        const lbTitle = document.getElementById('lb-title');
+        const lbDesc = document.getElementById('lb-desc');
+        const lbCurrent = document.getElementById('lb-current');
+        const lbTotal = document.getElementById('lb-total');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        let currentIndex = 0;
 
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                lbImg.src = item.querySelector('img').src;
-                lb.classList.add('active');
-            });
+        const descriptions = {
+            'Dashboard': 'Your pilot hub at a glance. Track career stats, recent flights, and quick access to all features.',
+            'Job Board': 'Browse and accept available contracts. Filter by aircraft type, distance, and payout.',
+            'Marketplace': 'Expand your fleet and unlock new destinations. Purchase aircraft and airport access.',
+            'Active Flight': 'Real-time flight tracking with live data. Monitor altitude, speed, and route progress.',
+            'Debrief': 'Post-flight analysis with landing scores, fuel efficiency, and earnings breakdown.',
+            'Logbook': 'Complete record of your flying history. Review past flights and track milestones.'
+        };
+
+        function showSlide(index) {
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+            currentIndex = index;
+
+            const item = galleryItems[index];
+            const title = item.querySelector('span').textContent;
+            lbImg.src = item.querySelector('img').src;
+            lbTitle.textContent = title;
+            lbDesc.textContent = descriptions[title] || '';
+            lbCurrent.textContent = index + 1;
+            lb.classList.add('active');
+        }
+
+        lbTotal.textContent = galleryItems.length;
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => showSlide(index));
         });
 
-        document.querySelector('.lightbox-close').addEventListener('click', () => lb.classList.remove('active'));
-        lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('active'); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('active'); });
+        const closeLightbox = () => lb.classList.remove('active');
+        const prevSlide = () => showSlide(currentIndex - 1);
+        const nextSlide = () => showSlide(currentIndex + 1);
+
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        document.querySelector('.lightbox-prev').addEventListener('click', prevSlide);
+        document.querySelector('.lightbox-next').addEventListener('click', nextSlide);
+        lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+        document.addEventListener('keydown', e => {
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Auto-open first screenshot on page load
+        window.addEventListener('load', () => showSlide(0));
     </script>
 </body>
 </html>

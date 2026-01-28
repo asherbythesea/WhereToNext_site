@@ -222,7 +222,8 @@ p {
     display: none;
     position: fixed;
     inset: 0;
-    background: #000;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
     z-index: 200;
     align-items: center;
     justify-content: center;
@@ -232,21 +233,127 @@ p {
     display: flex;
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90vh;
+.lightbox-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 95vw;
+    animation: fadeIn 0.3s ease;
 }
 
-.lightbox-close {
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lightbox-description {
+    position: relative;
+    max-width: 220px;
+    padding-top: 60px;
+    animation: slideIn 0.4s ease 0.1s both;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.lightbox-description h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.lightbox-description p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.6;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 120px;
+    height: 60px;
+    color: #444;
+    margin-top: 16px;
+    animation: drawArrow 0.6s ease 0.3s both;
+}
+
+@keyframes drawArrow {
+    from {
+        opacity: 0;
+        stroke-dashoffset: 100;
+    }
+    to {
+        opacity: 1;
+        stroke-dashoffset: 0;
+    }
+}
+
+.lightbox-image-wrap {
+    position: relative;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px dashed #333;
+    pointer-events: none;
+}
+
+.lightbox img {
+    max-width: 70vw;
+    max-height: 80vh;
+    display: block;
+}
+
+.lightbox-nav {
     position: absolute;
     top: 24px;
-    right: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+}
+
+.lightbox-nav button {
     background: none;
-    border: none;
-    color: #fff;
+    border: 1px solid #333;
+    color: #888;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lightbox-nav button:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 2px;
 }
 
 /* Timeline */
@@ -627,5 +734,43 @@ footer a:hover {
 
     .disclaimer {
         text-align: center;
+    }
+
+    .lightbox-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .lightbox-description {
+        max-width: 90vw;
+        padding-top: 0;
+        text-align: center;
+        order: 2;
+    }
+
+    .lightbox-arrow {
+        display: none;
+    }
+
+    .lightbox img {
+        max-width: 90vw;
+        max-height: 50vh;
+    }
+
+    .lightbox-nav {
+        top: 16px;
+        gap: 8px;
+        width: 90%;
+        justify-content: center;
+    }
+
+    .lightbox-nav button {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .lightbox-counter {
+        bottom: 16px;
     }
 }
