@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screenshots — WhereToNext</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html" class="logo">WhereToNext</a>
@@ -28,27 +30,27 @@
 
         <div class="gallery">
             <div class="gallery-item">
-                <img src="images/dashboard.png" alt="Dashboard">
+                <img src="images/00_dashboard.png" alt="Dashboard">
                 <span>Dashboard</span>
             </div>
             <div class="gallery-item">
-                <img src="images/jobboard.png" alt="Job Board">
-                <span>Job Board</span>
-            </div>
-            <div class="gallery-item">
-                <img src="images/marketplace.png" alt="Marketplace">
+                <img src="images/01_marketplace.png" alt="Marketplace">
                 <span>Marketplace</span>
             </div>
             <div class="gallery-item">
-                <img src="images/currentjob_inprogress.png" alt="Active Flight">
+                <img src="images/02_hangar.png" alt="Hangar">
+                <span>Hangar</span>
+            </div>
+            <div class="gallery-item">
+                <img src="images/03_jobboard.png" alt="Job Board">
+                <span>Job Board</span>
+            </div>
+            <div class="gallery-item">
+                <img src="images/04_currentjob.png" alt="Active Flight">
                 <span>Active Flight</span>
             </div>
             <div class="gallery-item">
-                <img src="images/flightdebrief.png" alt="Debrief">
-                <span>Debrief</span>
-            </div>
-            <div class="gallery-item">
-                <img src="images/logbook.png" alt="Logbook">
+                <img src="images/05_logbook.png" alt="Logbook">
                 <span>Logbook</span>
             </div>
         </div>
@@ -65,8 +67,9 @@
                 <h3 id="lb-title"></h3>
                 <p id="lb-desc"></p>
                 <svg class="lightbox-arrow" viewBox="0 0 120 60" preserveAspectRatio="none">
-                    <path d="M0,30 Q40,30 80,10 L100,5" stroke-dasharray="6,4" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <polygon points="100,5 90,0 95,12" fill="currentColor"/>
+                    <path d="M0,30 Q40,30 80,10 L100,5" stroke-dasharray="6,4" fill="none" stroke="currentColor"
+                        stroke-width="2" />
+                    <polygon points="100,5 90,0 95,12" fill="currentColor" />
                 </svg>
             </div>
             <div class="lightbox-image-wrap">
@@ -82,15 +85,17 @@
         <div class="footer-top">
             <span>WhereToNext</span>
             <div>
-                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest" target="_blank">Download</a>
+                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest"
+                    target="_blank">Download</a>
                 <a href="https://buymeacoffee.com/asher_bythesea" target="_blank">Donate</a>
             </div>
         </div>
-        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
+        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or
+            Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
     </footer>
 
     <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
+        document.querySelector('.menu-btn').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
             this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
         });
@@ -105,12 +110,12 @@
         let currentIndex = 0;
 
         const descriptions = {
-            'Dashboard': 'Your pilot hub at a glance. Track career stats, recent flights, and quick access to all features.',
-            'Job Board': 'Browse and accept available contracts. Filter by aircraft type, distance, and payout.',
-            'Marketplace': 'Expand your fleet and unlock new destinations. Purchase aircraft and airport access.',
-            'Active Flight': 'Real-time flight tracking with live data. Monitor altitude, speed, and route progress.',
-            'Debrief': 'Post-flight analysis with landing scores, fuel efficiency, and earnings breakdown.',
-            'Logbook': 'Complete record of your flying history. Review past flights and track milestones.'
+            'Dashboard': 'Your dashboard at a glane. Track career stats and progression.',
+            'Marketplace': 'Expand your fleet by purchasing aircraft.',
+            'Hangar': 'Manage your fleet of aircraft. View owned planes, their stats, and set your active aircraft.',
+            'Jobs': 'Browse and accept available contracts.',
+            'Current Job': 'Complete your pre-flight briefing, then track your flight in real-time.',
+            'Logbook': 'Complete record of your flying history. Review past flights and analyze your landing performance.'
         };
 
         function showSlide(index) {
@@ -149,8 +154,32 @@
             if (e.key === 'ArrowRight') nextSlide();
         });
 
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50;
+
+        lb.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lb.addEventListener('touchend', e => {
+            if (!lb.classList.contains('active')) return;
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchEndX - touchStartX;
+
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    prevSlide(); // Swipe right = previous
+                } else {
+                    nextSlide(); // Swipe left = next
+                }
+            }
+        }, { passive: true });
+
         // Auto-open first screenshot on page load
         window.addEventListener('load', () => showSlide(0));
     </script>
 </body>
+
 </html>

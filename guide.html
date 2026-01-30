@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Guide — WhereToNext</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html" class="logo">WhereToNext</a>
@@ -31,55 +33,87 @@
             <div class="faq-a">
                 <p>1. Run the .exe file as Administrator.</p>
                 <p style="margin-top: 8px;">2. Open WhereToNext.</p>
-                <p style="margin-top: 8px;">3. You will be prompted to install navigation data into your <code>%LocalAppData%</code> folder. (See the guide below if you need assistance.)</p>
-                <p style="margin-top: 8px;">4. The onboarding screens will guide you through setting your name, starting plane, and starting location.</p>
+                <p style="margin-top: 8px;">3. You will be prompted to install navigation data into your
+                    <code>%LocalAppData%</code> folder. (See the guide below if you need assistance.)
+                </p>
+                <p style="margin-top: 8px;">4. The onboarding screens will guide you through setting your name, starting
+                    plane, and starting location.</p>
             </div>
         </div>
-        
-        
+
+
         <div class="faq-item">
             <button class="faq-q">First Flight<span>+</span></button>
-                <div class="faq-a">
-                    <p>1. Launch MSFS 2024 and WhereToNext. WhereToNext will automatically connect to the simulator.</p>
-                    <p style="margin-top: 8px;">2. Go to the <strong>Hangar</strong> page to select your aircraft.</p>
-                    <p style="margin-top: 8px;">3. Select a job from the <strong>Jobs</strong> page.</p>
-                    <p style="margin-top: 8px;">4. On the <strong>Current Job</strong> page, you will see a Pre-Flight Briefing. You will need to go to Free Fly mode in MSFS 2024, select the correct plane (and variant), and starting location.</p>
-                    <p style="margin-top: 8px;">5. Start the simulator.</p>
-                    <p style="margin-top: 8px;">6. Open your EFB, set your flight plan, and configure your loadout. The Pre-Flight Breifing will tell you how many passengers and/or cargo is needed as well as an estimated fuel amount.</p>
-                    <p style="margin-top: 8px;">7. Once you meet the Plane, Location, and Weight requirements, you will be able to begin the flight. Press <strong>Begin Flight</strong>. </p>
-                    <p style="margin-top: 8px;">8. Optionally, you may paste in your route string from the EFB, Simbrief, or Little NavMap into the field below the map.</p>
-                    <p style="margin-top: 8px;">9. Fly to your destination, land, and set the parking brake to end the mission.</p>
+            <div class="faq-a">
+                <p>1. Launch MSFS 2024 and WhereToNext. WhereToNext will automatically connect to the simulator.</p>
+                <p style="margin-top: 8px;">2. Go to the <strong>Hangar</strong> page to select your aircraft.</p>
+                <p style="margin-top: 8px;">3. Select a job from the <strong>Jobs</strong> page.</p>
+                <p style="margin-top: 8px;">4. On the <strong>Current Job</strong> page, you will see a Pre-Flight
+                    Briefing. You will need to go to Free Fly mode in MSFS 2024, select the correct plane (and variant),
+                    and starting location.</p>
+                <p style="margin-top: 8px;">5. Start the simulator.</p>
+                <p style="margin-top: 8px;">6. Open your EFB, set your flight plan, and configure your loadout. The
+                    Pre-Flight Breifing will tell you how many passengers and/or cargo is needed as well as an estimated
+                    fuel amount.</p>
+                <p style="margin-top: 8px;">7. Once you meet the Plane, Location, and Weight requirements, you will be
+                    able to begin the flight. Press <strong>Begin Flight</strong>. </p>
+                <p style="margin-top: 8px;">8. Optionally, you may paste in your route string from the EFB, Simbrief, or
+                    Little NavMap into the field below the map.</p>
+                <p style="margin-top: 8px;">9. Fly to your destination, land, and set the parking brake to end the
+                    mission.</p>
             </div>
         </div>
-        
-        <section class="section">
-            <span class="section-label">Creating Navigation database ("scenery library") with Little Navmap</span>
-            <p>1. Launch MSFS 2024. You will need to wait until the buttons Accessibility and Start show up before you can create and load the scenery library.</p>
-            <p style="margin-top: 8px;">2. Click <code>Start</code> to access the main menu of the simulator to avoid performance degradation caused by the movies.</p>
-            <p style="margin-top: 8px; margin-left: 2px;"><em>Note that the loading runs in background and may take several minutes.</em></p>
-            <p style="margin-top: 8px;">You can load the scenery library database by going to the menu item <code>Load Scenery Library</code> in the menu <code>Scenery Library</code>.</p>
-        </section>
+
+        <div class="faq-item">
+            <button class="faq-q">Creating Navigation database ("scenery library") with Little
+                Navmap<span>+</span></button>
+            <div class="faq-a">
+                <p>1. Launch MSFS 2024. You will need to wait until the buttons Accessibility and Start show up before
+                    you can create and load the scenery library.</p>
+                <p style="margin-top: 8px;">2. Click <code>Start</code> to access the main menu of the simulator to
+                    avoid performance degradation caused by the movies.</p>
+                <p style="margin-top: 8px;">3. You will create the database file
+                    <code>little_navmap_msfs24.sqlite</code> by going
+                    to the <code>Scenery Library</code> menu, and selecting <code>Load Scenery Library</code>, make sure
+                    "Microsoft Flight Simulator 2024" is selected in the dropdown menu, and then click the
+                    <code>Load</code> button.
+                </p>
+                <p style="margin-top: 8px;">4. After several minutes, the database will be created in
+                    <code>%AppData%\Roaming\ABarthel\little_navmap_db</code>. The approximate size of the database is
+                    460MB.
+                </p>
+                <p style="margin-top: 8px;">MANUAL COPY: If for some reason WhereToNext isn't showing the dialog asking
+                    for the navigation database, you will now need to copy the database file to the WhereToNext
+                    installation directory. The default location is
+                    <code>%LocalAppData%\WhereToNext</code>. Make sure you copy the
+                    <code>little_navmap_msfs24.sqlite</code> file.
+                </p>
+            </div>
+        </div>
+
     </main>
 
     <footer>
         <div class="footer-top">
             <span>WhereToNext</span>
             <div>
-                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest" target="_blank">Download</a>
+                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest"
+                    target="_blank">Download</a>
                 <a href="https://buymeacoffee.com/asher_bythesea" target="_blank">Donate</a>
             </div>
         </div>
-        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
+        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or
+            Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
     </footer>
 
     <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
+        document.querySelector('.menu-btn').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
             this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
         });
     </script>
-     <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
             this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
         });
@@ -92,4 +126,5 @@
         });
     </script>
 </body>
+
 </html>
