@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog — WhereToNext</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html" class="logo">WhereToNext</a>
@@ -28,14 +30,33 @@
 
         <div class="timeline-item">
             <div class="timeline-head">
-                <span class="timeline-ver">v1.0.2</span>
+                <span class="timeline-ver">v1.0.3</span>
                 <span class="timeline-tag">Current</span>
                 <span class="timeline-date">Jan 29, 2026</span>
             </div>
             <ul class="timeline-list">
-                <li>Added auto-start for current job if pre-flight briefing is passed without hitting "Begin Flight".</li>
-                <li>Fixed Departure and Arrival airports not being labeled on the job board.</li>
-                <li>Fixed Logbook and Marketplace pages not loading on first attempt.</li>
+                <li>Improved the onboarding experience to recommend more atypical starting locations.</li>
+                <li>Fixed the scaling issues with the new onboarding dialogs.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-head">
+                <span class="timeline-ver">v1.0.2</span>
+                <span class="timeline-date">Jan 29, 2026</span>
+            </div>
+            <ul class="timeline-list">
+                <li>Added a feature where the current job will begin if you forget to hit "Begin Flight" if you would
+                    have passed the Pre-Flight Briefing anyways.</li>
+                <li>Reworked landing and takeoff detection; accounting for errors within a 15 second grace period.</li>
+                <li>Overhauled pilot location persistence, allowing for free flight mode to gain XP but not money.
+                    Starting a flight from your location, without taking a job will trigger a free flight.</li>
+                <li>Added current aircraft and current location to the Dashboard page.</li>
+                <li>Improved how waypoints can be detected in the route plan and placed on the map in the Current Job
+                    page.</li>
+                <li>Fixed issue with Departure and Arrival airports not being labeled on the job board.</li>
+                <li>Fixed issue with the Logbook and Marketplace pages not loading on first attempt.</li>
+                <li>Fixed issue where the UI would lag during an update.</li>
             </ul>
         </div>
 
@@ -67,18 +88,21 @@
         <div class="footer-top">
             <span>WhereToNext</span>
             <div>
-                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest" target="_blank">Download</a>
+                <a href="https://github.com/asherbythesea/WhereToNext_Release/releases/latest"
+                    target="_blank">Download</a>
                 <a href="https://buymeacoffee.com/asher_bythesea" target="_blank">Donate</a>
             </div>
         </div>
-        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
+        <p class="disclaimer">WhereToNext is not affiliated with, endorsed by, or connected to Microsoft Corporation or
+            Asobo Studio. Microsoft Flight Simulator is a trademark of Microsoft Corporation.</p>
     </footer>
 
     <script>
-        document.querySelector('.menu-btn').addEventListener('click', function() {
+        document.querySelector('.menu-btn').addEventListener('click', function () {
             document.querySelector('.nav-links').classList.toggle('active');
             this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
         });
     </script>
 </body>
+
 </html>
