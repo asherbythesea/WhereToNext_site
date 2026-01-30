@@ -450,6 +450,10 @@ p {
     transition: max-height 0.3s;
 }
 
+.faq-item.open .faq-a {
+    max-height: 1000px; /* Safe upper limit that won't cut off text */
+}
+
 
 .faq-a p {
     padding-bottom: 24px;
