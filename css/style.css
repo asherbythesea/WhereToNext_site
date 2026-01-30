@@ -451,7 +451,7 @@ p {
 }
 
 .faq-item.open .faq-a {
-    max-height: 1000px; /* Safe upper limit that won't cut off text */
+    max-height: 100vh; /* Safe upper limit that won't cut off text */
 }
 
 
