@@ -77,5 +77,18 @@
             this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
         });
     </script>
+     <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.textContent = this.textContent === 'Menu' ? 'Close' : 'Menu';
+        });
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-q').addEventListener('click', () => {
+                document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open'); });
+                item.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 </html>
