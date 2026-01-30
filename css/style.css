@@ -450,9 +450,6 @@ p {
     transition: max-height 0.3s;
 }
 
-.faq-item.open .faq-a {
-    max-height: 1200px;
-}
 
 .faq-a p {
     padding-bottom: 24px;
