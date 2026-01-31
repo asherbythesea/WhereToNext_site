@@ -30,8 +30,25 @@
 
         <div class="timeline-item">
             <div class="timeline-head">
-                <span class="timeline-ver">v1.0.3</span>
+                <span class="timeline-ver">v1.0.4</span>
                 <span class="timeline-tag">Current</span>
+                <span class="timeline-date">Jan 31, 2026</span>
+            </div>
+            <ul class="timeline-list">
+                <li>Fixed race condition where free flight mode incorrectly triggered when taking off with an accepted
+                    job (but without clicking "Begin Flight").</li>
+                <li>Fixed landing detection incorrectly marking job flights as "Landed at destination" regardless of
+                    actual landing location. Job flights now only complete when landing at the correct destination
+                    airport. Free flights continue to track landings at any airport.</li>
+                <li>Fixed free flight mode not checking if the aircraft is owned by the user. Free flight now only
+                    tracks when flying an aircraft from your hangar.</li>
+                <li>Fixed marketplace "Buy" button not responding to clicks.</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-head">
+                <span class="timeline-ver">v1.0.3</span>
                 <span class="timeline-date">Jan 29, 2026</span>
             </div>
             <ul class="timeline-list">
