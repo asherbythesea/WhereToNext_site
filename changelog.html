@@ -35,7 +35,7 @@
                 <span class="timeline-date">Jan 31, 2026</span>
             </div>
             <ul class="timeline-list">
-                <li>Fixed race condition where free flight mode incorrectly triggered when taking off with an accepted
+                <li>Fixed issue where free flight mode incorrectly triggered when taking off with an accepted
                     job (but without clicking "Begin Flight").</li>
                 <li>Fixed landing detection incorrectly marking job flights as "Landed at destination" regardless of
                     actual landing location. Job flights now only complete when landing at the correct destination
@@ -43,6 +43,8 @@
                 <li>Fixed free flight mode not checking if the aircraft is owned by the user. Free flight now only
                     tracks when flying an aircraft from your hangar.</li>
                 <li>Fixed marketplace "Buy" button not responding to clicks.</li>
+                <li>Fixed issue where buying multiple aircraft at once would not update the infobar/notification area.
+                </li>
             </ul>
         </div>
 
